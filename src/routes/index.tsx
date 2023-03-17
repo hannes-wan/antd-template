@@ -16,6 +16,9 @@ const UserManagement = lazy(() => import("../views/Management/UserManagement"))
 const Login = lazy(() => import("../views/Login"))
 const NotFound = lazy(() => import("../views/Error/404"))
 const Loading = lazy(() => import("../views/Loading"))
+const Signup = lazy(() => import("../views/Signup"))
+const SignupSuccess = lazy(() => import("../views/SignupSuccess"))
+const Verify = lazy(() => import("../views/Verify"))
 
 // 懒加载模式的组件的写法外面需要套 Loading 的提示加载组件
 // 可以调用这个方法用React.Suspense来环绕需要懒加载的组件
@@ -85,6 +88,21 @@ const routes = [
     {
         path: "/login",
         element: withLoadingComponent(<Login/>),
+        icon: <DesktopOutlined/>
+    },
+    {
+        path: "/signup",
+        element: withLoadingComponent(<Signup/>),
+        icon: <DesktopOutlined/>
+    },
+    {
+        path: "/verify",
+        element: withLoadingComponent(<Verify/>),
+        icon: <DesktopOutlined/>
+    },
+    {
+        path: "/signup_success",
+        element: withLoadingComponent(<SignupSuccess/>),
         icon: <DesktopOutlined/>
     },
     {

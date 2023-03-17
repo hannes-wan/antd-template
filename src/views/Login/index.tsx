@@ -80,11 +80,13 @@ const Comp: React.FC = () => {
                         </Form.Item>
                         <Form.Item>
                             <Form.Item name="remember" valuePropName="checked" noStyle>
-                                <Checkbox className={style.loginFormRemember}>Remember me</Checkbox>
+                                <div>
+                                    <Checkbox className={style.loginFormRemember}>Remember me</Checkbox>
 
-                                <a className={style.loginFormForgot} href="/forget">
-                                    Forgot password
-                                </a>
+                                    <a className={style.loginFormForgot} href="/forget">
+                                        Forgot password
+                                    </a>
+                                </div>
                             </Form.Item>
                         </Form.Item>
 

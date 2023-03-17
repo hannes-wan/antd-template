@@ -4,7 +4,7 @@ import JSONBIG from "json-bigint"
 
 const instance = axios.create({
     // 单位毫秒
-    timeout: 3000,
+    timeout: 10000,
     //如需要携带cookie 该值需设为true
     withCredentials: true
 })

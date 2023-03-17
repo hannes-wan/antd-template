@@ -1,4 +1,4 @@
-.loginBackground{
+.signupBackground{
     height: 100%;
     width: 100%;
     background-image: url("../assets/login_background.jpg");
@@ -7,7 +7,7 @@
     position: relative;
 }
 
-.loginMain {
+.signupMain {
     display: flex;
     text-align: center;
     height: 100vh;
@@ -16,7 +16,7 @@
     align-items: center;
 }
 
-.loginContainer {
+.signupContainer {
     border-radius: 15px;
     position: relative;
     overflow: hidden;
@@ -28,24 +28,26 @@
     border: 1px solid #eaeaea;
 }
 
-.loginLogo {
+.signupLogo {
     size: 80%;
     padding: 10px 0 10px 0;
 }
 
-.loginForm {
+.signupForm {
     max-width: 300px;
 }
 
-.loginFormRemember {
+.signupFormButton {
+    width: 100%;
+}
+
+.signupFormCaptchaInput {
+    max-width: 50%;
     float: left;
 }
 
-
-.loginFormForgot {
+.signupFormCaptchaImage {
+    width: 40%;
     float: right;
-}
-
-.loginFormButton {
-    width: 100%;
+    align-items: center;
 }
