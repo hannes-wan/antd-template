@@ -1,0 +1,49 @@
+.loginBackground{
+    height: 100%;
+    width: 100%;
+    background-image: url("../assets/login_background.jpg");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.loginMain {
+    text-align: center;
+    height: 100vh;
+    overflow:hidden;
+    justify-content: center;
+}
+
+.loginContainer {
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    background-clip: padding-box;
+    margin: 11% auto;
+    width: 300px;
+    padding: 30px 100px 30px 100px;
+    background: rgba(255, 255, 255, 0.80);
+    border: 1px solid #eaeaea;
+}
+
+.loginLogo {
+    size: 80%;
+    padding: 10px 0 10px 0;
+}
+
+.loginForm {
+    max-width: 300px;
+}
+
+.loginFormRemember {
+    float: left;
+}
+
+
+.loginFormForgot {
+    float: right;
+}
+
+.loginFormButton {
+    width: 100%;
+}

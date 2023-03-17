@@ -1,0 +1,25 @@
+// scss支持需要先安装依赖到开发环境中
+// npm i --save-dev sass
+$color: #ffffff;
+body{
+  background-color: $color;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  // 禁用文字选中状态
+  // user-select: none;
+}
+
+img{
+  // 禁止拖动图片
+  -webkit-user-drag: none;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  monospace;
+}
