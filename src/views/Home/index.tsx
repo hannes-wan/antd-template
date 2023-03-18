@@ -20,7 +20,7 @@ const View: React.FC = () => {
             <Content className="site-layout" style={{ padding: '25px 100px' }}>
                 <Breadcrumb/>
 
-                <div style={{ padding: 24, minHeight: 380, background: colorBgContainer }}>
+                <div style={{ padding: 24, minHeight: 500, background: colorBgContainer }}>
                     <Outlet/>
                 </div>
             </Content>

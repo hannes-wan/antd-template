@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import logo from '../../assets/logo.png'
 import { Button, Checkbox, Form, Input, message} from 'antd';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
@@ -11,6 +11,7 @@ import {useNavigate} from "react-router-dom";
 const Comp: React.FC = () => {
 
     const navigate = useNavigate()
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         if (window.localStorage.getItem("user") !== null) {
@@ -19,8 +20,10 @@ const Comp: React.FC = () => {
         }
     }, [navigate]);
 
-    const onFinish = (values: LoginForm) => {
-        loginAPI(values).then((resp: any) => {
+    const onFinish = async (values: LoginForm) => {
+        setLoading(true)
+
+        await loginAPI(values).then((resp: any) => {
             if (resp && resp.code === 200) {
                 message.success(resp.message)
                 if (resp.data !== undefined && resp.data !== null && Object.prototype.hasOwnProperty.call(resp.data, "token"))
@@ -29,6 +32,8 @@ const Comp: React.FC = () => {
                 navigate("/")
             }
         })
+
+        setLoading(false)
     };
 
     const onFinishFailed = (errorInfo: any) => {
@@ -91,7 +96,7 @@ const Comp: React.FC = () => {
                         </Form.Item>
 
                         <Form.Item>
-                            <Button type="primary" htmlType="submit" className={style.loginFormButton}>
+                            <Button type="primary" htmlType="submit" className={style.loginFormButton} loading={loading}>
                                 Login
                             </Button>
                             Or <a href="/signup">register now!</a>

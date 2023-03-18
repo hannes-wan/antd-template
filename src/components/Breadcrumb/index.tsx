@@ -1,39 +1,38 @@
 import React from 'react';
-import {Breadcrumb} from "antd";
-import {useLocation} from "react-router-dom";
+import { Breadcrumb } from "antd";
+import { useLocation } from "react-router-dom";
 import routes from "../../routes";
 
 const Comp: React.FC = () => {
-    const currentRoute = useLocation()
+  const currentRoute = useLocation()
 
-    let breadcrumbs: string[] = function () {
-        let breadcrumbs: string[] = []
-        const route = routes.find((route) => route.path === "/" && route.hasOwnProperty("children")) as any;
-        breadcrumbs.push("Home")
-        for (let i = 0; i < route.children.length; i++) {
-            if (route.children[i].path === currentRoute.pathname ) {
-                breadcrumbs.push(route.children[i].label)
-                break
-            }
+  // Memorized recursion
+  function findPath(root: any, target: string, visitedMap: Map<any, string[]> = new Map()): string[] | null {
+    if (root.path === target) return [root.label];
+    if (visitedMap.has(root)) return visitedMap.get(root)!;
 
-            if (route.children[i].hasOwnProperty("children")
-                && route.children[i].children.length !== 0
-                && route.children[i].children.find((child: any) => child.path === currentRoute.pathname)) {
-                breadcrumbs.push(route.children[i].label)
-                breadcrumbs.push(route.children[i].children.find((child: any) => child.path === currentRoute.pathname).label)
-                break
-            }
+    if (root.hasOwnProperty("children")) {
+      for (const child of root.children) {
+        const pathToChild = findPath(child, target, visitedMap);
+        if (pathToChild) {
+          const fullpath = [root.label, ...pathToChild];
+          visitedMap.set(root, fullpath);
+          return fullpath;
         }
+      }
+    }
 
-        return breadcrumbs
-    } ();
+    return null;
+  }
 
-    return (
-        <Breadcrumb style={{ margin: '16px 0' }}>
-            {/* 每个元素都必须有一个特定的key */}
-            {breadcrumbs.map((breadcrumb: string, index: number) => (<Breadcrumb.Item key={index}>{breadcrumb}</Breadcrumb.Item>))}
-        </Breadcrumb>
-    )
+  const breadcrumbs: string[] = findPath(routes.find((route) => route.path === "/" && route.hasOwnProperty("children")) as any, currentRoute.pathname) || [];
+
+  return (
+    <Breadcrumb style={{ margin: '16px 0' }}>
+      {/* 每个元素都必须有一个特定的key */}
+      {breadcrumbs.map((breadcrumb: string, index: number) => (<Breadcrumb.Item key={index}>{breadcrumb}</Breadcrumb.Item>))}
+    </Breadcrumb>
+  )
 };
 
 export default Comp;

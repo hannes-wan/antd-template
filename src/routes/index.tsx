@@ -9,10 +9,10 @@ import { Navigate } from "react-router-dom"
 
 // 如果是直接import About就是一个页面全部加载，所以用懒的方法来定义这个About
 const Home = lazy(() => import("../views/Home"))
-const Welcome = lazy(() => import("../views/Welcome"))
-const About = lazy(() => import("../views/About"))
-const BlogManagement = lazy(() => import("../views/Management/BlogManagement"))
-const UserManagement = lazy(() => import("../views/Management/UserManagement"))
+const Welcome = lazy(() => import("../views/Home/Welcome"))
+const About = lazy(() => import("../views/Home/About"))
+const BlogManagement = lazy(() => import("../views/Home/Management/BlogManagement"))
+const UserManagement = lazy(() => import("../views/Home/Management/UserManagement"))
 const Login = lazy(() => import("../views/Login"))
 const NotFound = lazy(() => import("../views/Error/404"))
 const Loading = lazy(() => import("../views/Loading"))
@@ -39,37 +39,31 @@ const routes = [
     },
     {
         path: "/",
+        label: "Home",
         element: <Home />,
         // 如果有嵌套路由就加上children，下面的都是子路由
         children: [
             {
                 path: "/welcome",
                 element: withLoadingComponent(<Welcome/>),
-
                 // 自定义的，方便 Menu 写活 Route
                 label: "Welcome",
                 icon: <PieChartOutlined/>
             },
             {
                 path: "/management",
-
-                // 自定义的，方便 Menu 写活 Route
                 label: "Management",
                 icon: <QuestionCircleOutlined />,
                 children: [
                     {
                         path: "/management/blog-management",
                         element: withLoadingComponent(<BlogManagement/>),
-
-                        // 自定义的，方便 Menu 写活 Route
                         label: "Blog Management",
                         icon: <PieChartOutlined/>
                     },
                     {
                         path: "/management/user-management",
                         element: withLoadingComponent(<UserManagement/>),
-
-                        // 自定义的，方便 Menu 写活 Route
                         label: "User Management",
                         icon: <PieChartOutlined/>
                     }
@@ -78,8 +72,6 @@ const routes = [
             {
                 path: "/about",
                 element: withLoadingComponent(<About/>),
-
-                // 自定义的，方便 Menu 写活 Route
                 label: "About",
                 icon: <QuestionCircleOutlined />
             }
@@ -87,21 +79,25 @@ const routes = [
     },
     {
         path: "/login",
+        label: "Login",
         element: withLoadingComponent(<Login/>),
         icon: <DesktopOutlined/>
     },
     {
         path: "/signup",
+        label: "Signup",
         element: withLoadingComponent(<Signup/>),
         icon: <DesktopOutlined/>
     },
     {
         path: "/verify",
+        label: "Verify",
         element: withLoadingComponent(<Verify/>),
         icon: <DesktopOutlined/>
     },
     {
         path: "/signup_success",
+        label: "Signup Success",
         element: withLoadingComponent(<SignupSuccess/>),
         icon: <DesktopOutlined/>
     },

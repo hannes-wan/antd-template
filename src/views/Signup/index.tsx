@@ -12,6 +12,7 @@ const View: React.FC = () => {
 
     const navigate = useNavigate()
     const [captcha, setCaptcha] = useState<string>('');
+    const [loading, setLoading] = useState(false);
 
     async function fetchCaptcha() {
         const resp: any = await getCaptchaAPI();
@@ -37,8 +38,11 @@ const View: React.FC = () => {
 
     }, [navigate]);
 
-    const onFinish = (values: SignupForm) => {
-        signupAPI(values).then((resp: any) => {
+    const onFinish = async (values: SignupForm) => {
+
+        setLoading(true)
+
+        await signupAPI(values).then((resp: any) => {
             if (resp && resp.code === 200) {
                 message.success(resp.message)
                 navigate("/signup_success")
@@ -46,6 +50,8 @@ const View: React.FC = () => {
                 fetchCaptcha()
             }
         })
+
+        setLoading(false)
     };
 
     const onFinishFailed = (errorInfo: any) => {
@@ -130,7 +136,7 @@ const View: React.FC = () => {
                         </Form.Item>
 
                         <Form.Item>
-                            <Button type="primary" htmlType="submit" className={style.signupFormButton}>
+                            <Button type="primary" htmlType="submit" className={style.signupFormButton} loading={loading}>
                                 Sign up
                             </Button>
                             Or <a href="/login">already have an account?</a>

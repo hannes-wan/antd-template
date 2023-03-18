@@ -1,8 +1,8 @@
-import React, {lazy} from 'react';
-import {Header} from "antd/es/layout/layout";
-import {Menu} from "antd";
+import React, { lazy } from 'react';
+import { Header } from "antd/es/layout/layout";
+import { Menu } from "antd";
 import type { MenuProps } from 'antd';
-import {useNavigate, useLocation} from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import routes from "../../routes";
 import logo from "../../assets/logo.png";
 
@@ -45,7 +45,7 @@ const items: MenuItem[] = (function (routes: any[]) {
     });
 
     return menuItems;
-}) (routes);
+})(routes);
 
 const Comp: React.FC = () => {
 
@@ -53,7 +53,7 @@ const Comp: React.FC = () => {
     const currentRoute = useLocation()
 
     return (
-        <Header style={{ position: 'sticky', top: 0, zIndex: 1, width: '100%', backgroundColor: "white"}}>
+        <Header style={{ position: 'sticky', top: 0, zIndex: 1, width: '100%', backgroundColor: "white" }}>
 
             {/*logo*/}
             <div
@@ -77,12 +77,12 @@ const Comp: React.FC = () => {
                 mode="horizontal"
                 defaultSelectedKeys={[currentRoute.pathname]}
                 items={items}
-                onClick = {(e: {key: string}) => {navigateTo(e.key)}}
-                style={{float: "left"}}
+                onClick={(e: { key: string }) => { navigateTo(e.key) }}
+                style={{ float: "left" }}
             />
 
-            <div style={{float: "right", marginRight: "50px"}}>
-                <State/>
+            <div style={{ float: "right", marginRight: "50px" }}>
+                <State />
             </div>
 
         </Header>

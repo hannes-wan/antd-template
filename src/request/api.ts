@@ -2,7 +2,6 @@ import request from "./index"
 import {LoginForm} from "../views/Login/types";
 import { SignupForm } from "../views/Signup/types";
 import { VerifyInfo } from "../views/Verify/types";
-import { verify } from "crypto";
 
 export const loginAPI = (values: LoginForm) => {
 
