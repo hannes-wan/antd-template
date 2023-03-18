@@ -4,7 +4,7 @@ import {Outlet} from "react-router-dom";
 
 const { Content } = Layout;
 const Header = lazy(() => import("../../components/Header"))
-const Breadcrumb = lazy(() => import("../../components/Breadcrumb"))
+const Breadcrumb = lazy(() => import("../../components/HomeBreadcrumb"))
 const Footer = lazy(() => import("../../components/Footer"))
 
 const View: React.FC = () => {

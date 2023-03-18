@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import {Dropdown, Space, Avatar, Modal, message, Spin} from 'antd';
-import {getAccountInfoAPI, logoutAPI} from "../../request/api";
+import {getAccountInfoAPI, logoutAPI} from "../../../request/api";
 import {useNavigate} from "react-router-dom";
 
 function RenderState () {
@@ -46,7 +46,7 @@ function RenderState () {
     const items: MenuProps['items'] = [
         {
             label: (
-                <a target="_blank" rel="noopener noreferrer" href="#">
+                <a target="_self" rel="noopener noreferrer" href="/settings">
                     settings
                 </a>
             ),

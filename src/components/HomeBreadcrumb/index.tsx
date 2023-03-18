@@ -25,7 +25,7 @@ const Comp: React.FC = () => {
     return null;
   }
 
-  const breadcrumbs: string[] = findPath(routes.find((route) => route.path === "/" && route.hasOwnProperty("children")) as any, currentRoute.pathname) || [];
+  const breadcrumbs: string[] = findPath(routes.find((route) => route.path === "/home" && route.hasOwnProperty("children")) as any, currentRoute.pathname) || [];
 
   return (
     <Breadcrumb style={{ margin: '16px 0' }}>

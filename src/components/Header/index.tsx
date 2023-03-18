@@ -1,14 +1,13 @@
-import React, { lazy } from 'react';
+import React from 'react';
 import { Header } from "antd/es/layout/layout";
 import { Menu } from "antd";
 import type { MenuProps } from 'antd';
 import { useNavigate, useLocation } from "react-router-dom";
 import routes from "../../routes";
 import logo from "../../assets/logo.png";
+import State from './State';
 
 type MenuItem = Required<MenuProps>['items'][number]
-
-const State = lazy(() => import("../State"))
 
 function getItem(
     label: React.ReactNode,
@@ -40,7 +39,7 @@ function routeToMenuItem(route: any): MenuItem {
 // 调用匿名函数初始化 items
 const items: MenuItem[] = (function (routes: any[]) {
     let menuItems: MenuItem[] = [];
-    routes.find((route) => route.path === "/" && route.hasOwnProperty("children")).children.forEach((child: any) => {
+    routes.find((route) => route.path === "/home" && route.hasOwnProperty("children")).children.forEach((child: any) => {
         menuItems.push(routeToMenuItem(child))
     });
 
