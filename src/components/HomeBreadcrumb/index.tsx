@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import routes from "../../routes";
 
 const Comp: React.FC = () => {
+
   const currentRoute = useLocation()
 
   // Memorized recursion
